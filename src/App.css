@@ -5,11 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--info);
 }
 
 .appFooter {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -17,7 +17,7 @@
   vertical-align: middle;
   text-align: center;
   background-color: var(--dark);
-  color: white;
+  color: var(--info);
   font-size: 1.5em;
 }
 
@@ -34,4 +34,14 @@ form {
   justify-content: center;
   height: 40vh;
   align-items: center;
+}
+
+.moviesSection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.movieCard {
+  margin: 3%;
 }
