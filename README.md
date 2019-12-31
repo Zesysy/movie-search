@@ -1,4 +1,4 @@
-# AudioWizard
+# Movie Search
 
 Movie search web app to continue manipulating hoks and discovering the useReducer hook
 
