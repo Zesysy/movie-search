@@ -5,12 +5,22 @@ const SearchMovies = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = event => {
-    event.preventDefault(); // To cancel the default behavior of the form submit
+    event.preventDefault(); // To cancel the default behavior
     setSearchValue(event.target.value); // Method that changes the searchValue state as you enter a new letter
   };
 
+  const resetInputField = () => {
+    setSearchValue(""); // Resets the searchValue state to zero
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault(); // To cancel the default behavior
+    console.log(searchValue);
+    resetInputField();
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <InputGroup>
         <Input
           className="inputForm"
