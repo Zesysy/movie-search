@@ -1,3 +1,12 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+}
+
 .appHeader {
   background-color: var(--dark);
   height: 80px;
@@ -8,9 +17,10 @@
   color: var(--info);
 }
 
-.appFooter {
-  position: relative;
+footer {
+  position: absolute;
   bottom: 0;
+  top: 100%;
   left: 0;
   right: 0;
   height: 40px;
@@ -26,18 +36,19 @@ input {
 }
 
 div.input-group {
-  width: 70%;
+  width: 50%;
 }
 
 form {
   display: flex;
   justify-content: center;
-  height: 40vh;
+  height: 30vh;
   align-items: center;
 }
 
 .moviesSection {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
 }

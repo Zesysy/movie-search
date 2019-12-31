@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { InputGroup, InputGroupAddon, Input, Button, Form } from "reactstrap";
 
-const SearchMovies = () => {
+const SearchMovies = ({ search }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = event => {
@@ -15,7 +15,7 @@ const SearchMovies = () => {
 
   const handleSubmit = e => {
     e.preventDefault(); // To cancel the default behavior
-    console.log(searchValue);
+    search(searchValue);
     resetInputField();
   };
 

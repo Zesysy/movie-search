@@ -1,90 +1,75 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import "./App.css";
-import { Row, Col } from "reactstrap";
+import { Col, Spinner } from "reactstrap";
 
 import Header from "./Header";
 import Footer from "./Footer";
 import SearchMovies from "./SearchMovies";
 import Movie from "./Movie";
+import { reducer, initialState } from "./reducer";
 
-const allMovies = [
-  {
-    id: 1,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "IronMan",
-    Year: "2000",
-    Plot: "The rich man"
-  },
-  {
-    id: 2,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Batman",
-    Year: "2001",
-    Plot: "Man in black"
-  },
-  {
-    id: 3,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Superman",
-    Year: "2002",
-    Plot: "The Man of Steel"
-  },
-  {
-    id: 4,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Superman",
-    Year: "2002",
-    Plot: "The Man of Steel"
-  },
-  {
-    id: 5,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "IronMan",
-    Year: "2000",
-    Plot: "The rich man"
-  },
-  {
-    id: 6,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Batman",
-    Year: "2001",
-    Plot: "Man in black"
-  },
-  {
-    id: 7,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Superman",
-    Year: "2002",
-    Plot: "The Man of Steel"
-  },
-  {
-    id: 8,
-    Poster:
-      "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg",
-    Title: "Superman",
-    Year: "2002",
-    Plot: "The Man of Steel"
-  }
-];
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=ec92b916"; // API URL with my own key
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    // When mounting the component, launch the fetch method to retrieve all the films containing "man" in their title
+    fetch(MOVIE_API_URL)
+      .then(response => response.json()) // Recover data in json format
+      .then(jsonResponse => {
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: jsonResponse.Search // Filled movies with data received
+        });
+      });
+  }, []);
+
+  const search = searchValue => {
+    //method which will make it possible to search for a film by its name in the API
+    dispatch({
+      type: "SEARCH_MOVIES_REQUEST"
+    });
+
+    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=ec92b916`) // searchValue represents the input retrieved in the search bar
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (jsonResponse.Response === "True") {
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload: jsonResponse.Search
+          });
+        } else {
+          dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: jsonResponse.Error
+          });
+        }
+      });
+  };
+
+  const { movies, errorMessage, loading } = state; // Destructuring of state data
+
   return (
     <>
       <Header title="Movie Search" />
-      <SearchMovies />
+      <SearchMovies search={search} />
       <section className="moviesSection">
-        {allMovies.map(movie => (
-          <Col lg="3">
-            <Movie key={movie.id} movie={movie} />
-          </Col>
-        ))}
+        {loading && !errorMessage ? (
+          <Spinner
+            style={{ width: "3rem", height: "3rem" }}
+            type="grow"
+            color="danger"
+          />
+        ) : errorMessage ? (
+          <p>{errorMessage}</p>
+        ) : (
+          movies.map(movie => (
+            <Col lg="3">
+              <Movie key={movie.id} movie={movie} />
+            </Col>
+          ))
+        )}
       </section>
       <Footer myName="Sylène Manusset | 2020" />
     </>

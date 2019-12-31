@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = ({ myName }) => {
   return (
-    <footer className="appFooter">
+    <footer>
       <i className="far fa-copyright m-2"> {myName}</i>
     </footer>
   );
