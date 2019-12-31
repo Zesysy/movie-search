@@ -1,5 +1,6 @@
 import React from "react";
 import { CardHeader, Card, CardImg, CardText, CardBody } from "reactstrap";
+import PropTypes from "prop-types";
 
 const DEFAULT_PLACEHOLDER_IMAGE =
   "https://cdn.pixabay.com/photo/2012/11/04/08/19/film-64070_960_720.jpg";
@@ -24,6 +25,14 @@ const Movie = ({ movie }) => {
       </Card>
     </div>
   );
+};
+
+Movie.propTypes = {
+  movie: PropTypes.shape({
+    Poster: PropTypes.string,
+    Title: PropTypes.string.isRequired,
+    Year: PropTypes.string
+  })
 };
 
 export default Movie;

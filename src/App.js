@@ -64,9 +64,9 @@ function App() {
         ) : errorMessage ? (
           <p>{errorMessage}</p>
         ) : (
-          movies.map(movie => (
-            <Col lg="3">
-              <Movie key={movie.id} movie={movie} />
+          movies.map((movie, key) => (
+            <Col key={key} lg="3">
+              <Movie movie={movie} />
             </Col>
           ))
         )}

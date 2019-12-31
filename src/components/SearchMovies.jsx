@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { InputGroup, InputGroupAddon, Input, Button, Form } from "reactstrap";
+import PropTypes from "prop-types";
 
 const SearchMovies = ({ search }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -35,6 +36,10 @@ const SearchMovies = ({ search }) => {
       </InputGroup>
     </Form>
   );
+};
+
+SearchMovies.propTypes = {
+  search: PropTypes.func.isRequired
 };
 
 export default SearchMovies;

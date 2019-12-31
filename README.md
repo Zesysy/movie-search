@@ -1,4 +1,3 @@
-
 # AudioWizard
 
 Movie search web app to continue manipulating hoks and discovering the useReducer hook
@@ -13,7 +12,7 @@ git clone git@github.com:Zesysy/movie-search.git
 
 ## Prerequisites
 
-- npm 6.12.0
+- npm 6.13.4
 
 ## Getting Started
 
