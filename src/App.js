@@ -2,10 +2,10 @@ import React, { useEffect, useReducer } from "react";
 import "./App.css";
 import { Col, Spinner } from "reactstrap";
 
-import Header from "./Header";
-import Footer from "./Footer";
-import SearchMovies from "./SearchMovies";
-import Movie from "./Movie";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SearchMovies from "./components/SearchMovies";
+import Movie from "./components/Movie";
 import { reducer, initialState } from "./reducer";
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=ec92b916"; // API URL with my own key

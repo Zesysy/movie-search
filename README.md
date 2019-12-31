@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# AudioWizard
 
-In the project directory, you can run:
+Movie search web app to continue manipulating hoks and discovering the useReducer hook
 
-### `yarn start`
+## Clone
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone this repo to your local machine using
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+git clone git@github.com:Zesysy/movie-search.git
+```
 
-### `yarn test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- npm 6.12.0
 
-### `yarn build`
+## Getting Started
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1.  `npm install`
+2.  `npm start`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Application view](/src/assets/application-view.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Built With
 
-### `yarn eject`
+- [ReactJs](https://reactjs.org/) - The web framework (library) used
+- [Reactstrap](https://reactstrap.github.io/) - Boostrap for React
+- [Bootswatch](https://bootswatch.com/) - Free themes for Bootstrap
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Folder Hierarchy
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `/node_modules` : is the folder where all the dependencies are installed. Don't touch this
+- `/public`
+- `/src` : where all the code is, this is the folder who get all our interest here.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## `/src`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Folders
 
-## Learn More
+- `/assets` : You will find the img
+- `/components` : All mycomponents are here: Footer, Header, Movie ...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Files
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `index.js`: Is the application's entry point
+- `App.js` : Call area of all components
+- `reducer.js` : File containing the reducer of the app and this initial state
 
-### Code Splitting
+## Standards
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- camelCase is the way to go here. :camel:
+- PascalCase for component names
 
-### Analyzing the Bundle Size
+## Feature
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Movie search by title
 
-### Making a Progressive Web App
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [Sylène](https://github.com/Zesysy) - Developer front-end

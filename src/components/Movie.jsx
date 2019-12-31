@@ -19,10 +19,7 @@ const Movie = ({ movie }) => {
           style={{ height: "30rem" }}
         />
         <CardBody>
-          <CardText>
-            {movie.Plot}
-            <small className="text-muted"> ({movie.Year})</small>
-          </CardText>
+          <CardText>{movie.Year}</CardText>
         </CardBody>
       </Card>
     </div>
