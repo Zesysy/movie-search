@@ -52,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Header title="Movie Search" />
+      <Header title="Lovely Movie" />
       <SearchMovies search={search} />
       <section className="moviesSection">
         {loading && !errorMessage ? (
