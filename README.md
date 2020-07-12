@@ -1,6 +1,6 @@
 # Movie Search
 
-Movie search web app to continue manipulating hoks and discovering the useReducer hook
+Movie search web app to continue manipulating hooks and discovering the useReducer hook
 
 ## Clone
 
