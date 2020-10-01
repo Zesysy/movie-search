@@ -9,40 +9,42 @@ import Movie from "./components/Movie";
 import { reducer, initialState } from "./reducer";
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=ec92b916"; // API URL with my own key
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     // When mounting the component, launch the fetch method to retrieve all the films containing "man" in their title
-    fetch(MOVIE_API_URL)
-      .then(response => response.json()) // Recover data in json format
-      .then(jsonResponse => {
+    // Use a CORS proxy to get around “No Access-Control-Allow-Origin header” problems
+    fetch(proxyurl + MOVIE_API_URL)
+      .then((response) => response.json()) // Recover data in json format
+      .then((jsonResponse) => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
-          payload: jsonResponse.Search // Filled movies with data received
+          payload: jsonResponse.Search, // Filled movies with data received
         });
       });
   }, []);
 
-  const search = searchValue => {
+  const search = (searchValue) => {
     //method which will make it possible to search for a film by its name in the API
     dispatch({
-      type: "SEARCH_MOVIES_REQUEST"
+      type: "SEARCH_MOVIES_REQUEST",
     });
 
     fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=ec92b916`) // searchValue represents the input retrieved in the search bar
-      .then(response => response.json())
-      .then(jsonResponse => {
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         if (jsonResponse.Response === "True") {
           dispatch({
             type: "SEARCH_MOVIES_SUCCESS",
-            payload: jsonResponse.Search
+            payload: jsonResponse.Search,
           });
         } else {
           dispatch({
             type: "SEARCH_MOVIES_FAILURE",
-            error: jsonResponse.Error
+            error: jsonResponse.Error,
           });
         }
       });
